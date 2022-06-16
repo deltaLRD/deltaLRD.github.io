@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GAMES104--2rd - LRD&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="LRD,"> 
+    <meta name="description" content="Games104—2nd游戏引擎分层我们接触到的第一层Editor(工具层)然后就是Rendering, Physics,Animation, Script, HUD(function)然后资源管理,"> 
+    <meta name="author" content="LRD"> 
+    <link rel="alternative" href="atom.xml" title="LRD&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="GAMES104--2rd - LRD&#39;s blog"/>
+    <meta name="twitter:description" content="Games104—2nd游戏引擎分层我们接触到的第一层Editor(工具层)然后就是Rendering, Physics,Animation, Script, HUD(function)然后资源管理,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="LRD&#39;s blog"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="GAMES104--2rd - LRD&#39;s blog"/>
+    <meta property="og:description" content="Games104—2nd游戏引擎分层我们接触到的第一层Editor(工具层)然后就是Rendering, Physics,Animation, Script, HUD(function)然后资源管理,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">LRD&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">GAMES104--2rd</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">GAMES104--2rd</h1>
+        <div class="stuff">
+            <span>三月 21, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Games104/" rel="tag">Games104</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Games104—2nd"><a href="#Games104—2nd" class="headerlink" title="Games104—2nd"></a>Games104—2nd</h1><h2 id="游戏引擎分层"><a href="#游戏引擎分层" class="headerlink" title="游戏引擎分层"></a>游戏引擎分层</h2><p>我们接触到的第一层Editor(工具层)<br>然后就是Rendering, Physics,Animation, Script, HUD(function)<br>然后资源管理，psd, max, maya, mp3, xml, mpeg<br>然后是核心层(瑞士军刀)<br>然后是平台层</p>
+<blockquote>
+<p>PC, Mac, Consoles, InputDevice, PublishingPlatforms<br>还有第三方层<br>5+1层。<br><img src="https://delta_lrd.gitee.io/pic/173.jpg"></p>
+</blockquote>
+<h2 id="First-task-–-做一个会动的角色"><a href="#First-task-–-做一个会动的角色" class="headerlink" title="First task – 做一个会动的角色"></a>First task – 做一个会动的角色</h2><h3 id="将资源文件变成asset"><a href="#将资源文件变成asset" class="headerlink" title="将资源文件变成asset"></a>将资源文件变成asset</h3><p>第三方文件会有很多无效文件，我们importing 资源的时候，需要转化为我们的资产asset,最好能压缩一下。<br>不同资源直接需要进行相互关联，比如模型和贴图（xml）<br>给每个资产设定一个唯一识别号guid—global unique id</p>
+<h3 id="Runtime-Asset-Manager"><a href="#Runtime-Asset-Manager" class="headerlink" title="Runtime Asset Manager"></a>Runtime Asset Manager</h3><p>各种文件相互关联，需要一个Manager管理各种资源的生命周期。GC</p>
+<h3 id="Function-层"><a href="#Function-层" class="headerlink" title="Function 层"></a>Function 层</h3><h4 id="Tick运行时不断跑的函数"><a href="#Tick运行时不断跑的函数" class="headerlink" title="Tick运行时不断跑的函数"></a>Tick运行时不断跑的函数</h4><p>ticklogic &amp; tickRender</p>
+<h4 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h4><p>将任务拆成原子任务，小的不能再小的，然后分配给多核。</p>
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><p>将动画的运算放进ticklogic<br>然后渲染的时候tickrender</p>
+<h3 id="核心层"><a href="#核心层" class="headerlink" title="核心层"></a>核心层</h3><h4 id="数学库"><a href="#数学库" class="headerlink" title="数学库"></a>数学库</h4><p>数学为效率服务<br>example - 卡马克快速平方根<br>SIMD加速线性代数运算<br><img src="https://delta_lrd.gitee.io/pic/171.jpg"></p>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p>链表，二叉树。。。<br>为了避免内存碎片全部重做，</p>
+<h4 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h4><ul>
+<li>Memory Pool/Allocator</li>
+<li>Reduce cache miss</li>
+<li>Memory alignment<h4 id="可能还有网络"><a href="#可能还有网络" class="headerlink" title="可能还有网络"></a>可能还有网络</h4><h3 id="平台层"><a href="#平台层" class="headerlink" title="平台层"></a>平台层</h3><h4 id="RHI"><a href="#RHI" class="headerlink" title="RHI"></a>RHI</h4>把各个图形API的函数重新分装一遍<h4 id="硬件架构"><a href="#硬件架构" class="headerlink" title="硬件架构"></a>硬件架构</h4>手机的大小核<br>各种协处理器。。。<h3 id="工具层"><a href="#工具层" class="headerlink" title="工具层"></a>工具层</h3>蓝图，材质，UI编辑器。<br>材质编辑器保证DCC软件和引擎里看上去是一样的<br>不一定用C++<h4 id="DCC"><a href="#DCC" class="headerlink" title="DCC"></a>DCC</h4>Asset Conditioning Pipline<br>各种格式的导入导出。<h2 id="为什么要分层"><a href="#为什么要分层" class="headerlink" title="为什么要分层"></a>为什么要分层</h2>减少耦合，加强封装，增加可读性。<br>底层最好不要动，但上层可以动。减少代码改动。<blockquote>
+<p>写代码之前，想想自己的代码在哪一层<br>底层不允许调用上层</p>
+</blockquote>
+<h2 id="Mini-Engine—Pilot-Engine来了"><a href="#Mini-Engine—Pilot-Engine来了" class="headerlink" title="Mini Engine—Pilot Engine来了"></a>Mini Engine—Pilot Engine来了</h2><h3 id="引擎分层"><a href="#引擎分层" class="headerlink" title="引擎分层"></a>引擎分层</h3></li>
+<li>Editor （Tool）</li>
+<li>Runtime （4层）</li>
+</ul>
+<p><img src="https://delta_lrd.gitee.io/pic/172.jpg"></p>
+<h3 id="有多线程ECS"><a href="#有多线程ECS" class="headerlink" title="有多线程ECS!!!"></a>有多线程ECS!!!</h3>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+
+</html>

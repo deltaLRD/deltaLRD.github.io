@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>C++ exam ans anlaysis - LRD&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="LRD,"> 
+    <meta name="description" content="C++ 解析太多了，还是去看答案吧
+第10题typedef int *INTERGER;其实可以把这个看成typedef int* INTERGER;这样是不是就清楚多了。所以INTERGER p ,"> 
+    <meta name="author" content="LRD"> 
+    <link rel="alternative" href="atom.xml" title="LRD&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="C++ exam ans anlaysis - LRD&#39;s blog"/>
+    <meta name="twitter:description" content="C++ 解析太多了，还是去看答案吧
+第10题typedef int *INTERGER;其实可以把这个看成typedef int* INTERGER;这样是不是就清楚多了。所以INTERGER p ,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="LRD&#39;s blog"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="C++ exam ans anlaysis - LRD&#39;s blog"/>
+    <meta property="og:description" content="C++ 解析太多了，还是去看答案吧
+第10题typedef int *INTERGER;其实可以把这个看成typedef int* INTERGER;这样是不是就清楚多了。所以INTERGER p ,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">LRD&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">C++ exam ans anlaysis</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">C++ exam ans anlaysis</h1>
+        <div class="stuff">
+            <span>十二月 19, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="C-解析"><a href="#C-解析" class="headerlink" title="C++ 解析"></a>C++ 解析</h1><p><del>太多了，还是去看答案吧</del></p>
+<h3 id="第10题"><a href="#第10题" class="headerlink" title="第10题"></a>第10题</h3><p><code>typedef int *INTERGER;</code>其实可以把这个看成<code>typedef int* INTERGER;</code>这样是不是就清楚多了。所以<br><code>INTERGER p</code> == <code>int* p</code><br><code>INTERGER *p</code> == <code>int* *p</code> == <code>int **p</code> == <code>int** p</code></p>
+<h3 id="第12题"><a href="#第12题" class="headerlink" title="第12题"></a>第12题</h3><p>函数重载的关键是重载了以后电脑到底还能不能知道你到底想调用哪个函数</p>
+<p>比如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>&#123;<span class="keyword">return</span>;&#125; <span class="comment">//函数1</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">f</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>&#123;<span class="keyword">return</span> <span class="number">0.0</span>;&#125;<span class="comment">//函数2</span></span><br><span class="line"><span class="built_in">f</span>(<span class="number">1</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这个时候电脑就不知道我们要做什么了，<del>换了我我也不能</del>因为两个函数都叫<code>f</code>而且传入的参数都一样</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">(<span class="type">int</span>,<span class="type">int</span>)</span></span>&#123;<span class="keyword">return</span>;&#125; <span class="comment">//函数1</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">f</span><span class="params">(<span class="type">int</span>)</span></span>&#123;<span class="keyword">return</span> <span class="number">0.0</span>;&#125;<span class="comment">//函数2</span></span><br><span class="line"><span class="built_in">f</span>(<span class="number">1</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这样就能知道了。</p>
+<p>所以题目里也一样，只要函数列表里面的参数不一样就能重载。</p>
+<h3 id="第15题"><a href="#第15题" class="headerlink" title="第15题"></a>第15题</h3><p><code>MyDERIVED</code>保护继承了<code>MyBASE</code>那么<code>MyBASE</code>里面的<code>public</code>的东西全部变成<code>protected</code>。<code>MyBASE</code>的<code>private</code>无法被访问。</p>
+<p>所以我们只要数一数<code>MyBASE</code>里面<code>public</code>和<code>MyDERIVED</code>里面<code>protected</code>的东西就可以了。</p>
+<h3 id="第17题"><a href="#第17题" class="headerlink" title="第17题"></a>第17题</h3><p>当一个类里面有形如<code>virtual [type] function()=0</code>那么这个类就是抽象类，抽象类不能实例化。</p>
+<p>当一个函数里面有虚函数的时候形如<code>virtual [type] function()&#123;&#125;</code>同时这个类被别的类继承，那么这个类就是虚基类。</p>
+<h3 id="第18题"><a href="#第18题" class="headerlink" title="第18题"></a>第18题</h3><p><code>cin&gt;&gt;x;</code>这是我们常见的c++里的输入。但<code>cin</code>本质上是个对象，是一个<code>istream</code>类实例化的对象。这里<code>istream</code>表示输入流，<code>i</code> == <code>in</code>输入，<code>stream</code>英文里的流，我们可以想象数据是一个个流进程序里的。</p>
+<p>所以题目里说<code>ifstream</code>就是<code>i</code> == <code>in</code> 输入，<code>f</code> == <code>file</code>文件，<code>stream</code>流。<del>很通俗易懂不是吗</del></p>
+<p>选项里的<code>ios</code>就是<code>i</code> == <code>in</code> 输入，<code>o</code> == <code>out</code>输入，<code>s</code> == <code>stream</code>流。<code>ios</code> == <del>苹果手机操作系统</del> == 输入输出流。<code>ios::in</code>的意思就是输入输出流里面的输入</p>
+<h3 id="第19题"><a href="#第19题" class="headerlink" title="第19题"></a>第19题</h3><p>看看答案。</p>
+<h3 id="第20题"><a href="#第20题" class="headerlink" title="第20题"></a>第20题</h3><p>首先我们需要知道一个公理</p>
+<blockquote>
+<p>先有老子才能有儿子</p>
+</blockquote>
+<p>所以B继承A，</p>
+<p>先要执行A的构造函数，</p>
+<p>再执行B的构造函数，</p>
+<p>B的构造函数里又要new一个A出来，</p>
+<p>所以还要再执行A的构造函数，</p>
+<p>然后我们就开始销毁B，</p>
+<p>执行B的析构函数，</p>
+<p>B的析构函数里还要销毁new出来的A，</p>
+<p>所以还要执行A的析构，</p>
+<p>B析构完以后还要把继承下来的A析构，</p>
+<p>所以还有个A的析构函数。</p>
+<p><del>累死了</del></p>
+<h2 id="第二大题"><a href="#第二大题" class="headerlink" title="第二大题"></a>第二大题</h2><h3 id="第2题"><a href="#第2题" class="headerlink" title="第2题"></a>第2题</h3><p><code>::a</code>是全局的<code>a</code>。</p>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>函数里<code>&amp;a</code>会影响函数外面变量的值，</p>
+<p><code>*a</code>会影响所指向的内存的值，但指针本身不会。</p>
+<h3 id="第4题"><a href="#第4题" class="headerlink" title="第4题"></a>第4题</h3><p>难点是<code>static</code>，<code>static</code>只会初始化变量一次，一次结束以后就算再遇到初始化语句直接忽略。</p>
+<blockquote>
+<p>static只能作用与static所在的作用域和次级作用域</p>
+</blockquote>
+<h3 id="第5题"><a href="#第5题" class="headerlink" title="第5题"></a>第5题</h3><p>难点是函数指针。</p>
+<p>代码翻译成人话就是输出$x^2-x^3$</p>
+<p>函数指针具体用法看书。</p>
+<h3 id="第6题"><a href="#第6题" class="headerlink" title="第6题"></a>第6题</h3><p><del>这题我也做错了</del></p>
+<p><code>w[k][k]</code>是一个<code>char</code>类型的变量<code>&amp;w[k][k]</code>就是一个地址也可以当做一个指针。</p>
+<p><code>cout</code>如果接了一个字符指针，他会一直输出当前字符，并且看下一个字符是啥如果不是<code>\0</code>那么就继续。</p>
+<p>这里就是比较不容易发现，发现了就挺好做的。</p>
+<h3 id="第8题"><a href="#第8题" class="headerlink" title="第8题"></a>第8题</h3><p>好好看看答案，二级指针比较难。</p>
+<h3 id="第10题-1"><a href="#第10题-1" class="headerlink" title="第10题"></a>第10题</h3><p>被virtual修饰的函数，如果被继承，在派生类中，如果进行了重构，那么就默认以重构以后的函数为准，重构前的函数可以直接不看。</p>
+<p>指向基类的的指针可以指向派生类。</p>
+<h2 id="第4大题"><a href="#第4大题" class="headerlink" title="第4大题"></a>第4大题</h2><h3 id="第3题"><a href="#第3题" class="headerlink" title="第3题"></a>第3题</h3><p><del>最后一空直接放掉吧</del></p>
+<p>好好看答案</p>
+<h2 id="第5大题"><a href="#第5大题" class="headerlink" title="第5大题"></a>第5大题</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FUN</span>&#123;</span><br><span class="line">    <span class="type">float</span> a,b;</span><br><span class="line">    <span class="type">float</span> x;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FUN</span>(<span class="type">float</span> t1, <span class="type">float</span> t2):<span class="built_in">a</span>(t1),<span class="built_in">b</span>(t2)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">float</span> <span class="title">f1</span><span class="params">(<span class="type">float</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a*<span class="built_in">cos</span>(x)+b*<span class="built_in">sin</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">float</span> <span class="title">f2</span><span class="params">(<span class="type">float</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> -a*<span class="built_in">sin</span>(x)+b*<span class="built_in">sin</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="type">double</span> tmp_x=<span class="number">2l</span>f;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">abs</span>(<span class="built_in">f1</span>(tmp_x)) &gt;= <span class="number">1e-5</span>)&#123;</span><br><span class="line">            tmp_x = tmp_x - <span class="built_in">f1</span>(tmp_x)/<span class="built_in">f2</span>(tmp_x);</span><br><span class="line">        &#125;</span><br><span class="line">        x = tmp_x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">fun</span>();</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;方程的解为: &quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;x &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> a=<span class="number">0</span>,b=<span class="number">0</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;请输入方程的系数: &quot;</span>;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    FUN fun = <span class="built_in">FUN</span>(a,b);</span><br><span class="line">    fun.<span class="built_in">print</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+
+</html>

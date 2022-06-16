@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CMake+GTest - LRD&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="LRD,"> 
+    <meta name="description" content="CMakeCMake的作用一天小明在Windows上用VS写了一个很牛的开源项目。他发到了gayhub😏上。但没有多少的star。他很疑惑。然后他发现，许多gay友都是用高端的MacBook，和极,"> 
+    <meta name="author" content="LRD"> 
+    <link rel="alternative" href="atom.xml" title="LRD&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="CMake+GTest - LRD&#39;s blog"/>
+    <meta name="twitter:description" content="CMakeCMake的作用一天小明在Windows上用VS写了一个很牛的开源项目。他发到了gayhub😏上。但没有多少的star。他很疑惑。然后他发现，许多gay友都是用高端的MacBook，和极,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="LRD&#39;s blog"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="CMake+GTest - LRD&#39;s blog"/>
+    <meta property="og:description" content="CMakeCMake的作用一天小明在Windows上用VS写了一个很牛的开源项目。他发到了gayhub😏上。但没有多少的star。他很疑惑。然后他发现，许多gay友都是用高端的MacBook，和极,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">LRD&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">CMake+GTest</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">CMake+GTest</h1>
+        <div class="stuff">
+            <span>二月 02, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><h2 id="CMake的作用"><a href="#CMake的作用" class="headerlink" title="CMake的作用"></a>CMake的作用</h2><p>一天小明在Windows上用VS写了一个很牛的开源项目。<br>他发到了gayhub😏上。但没有多少的star。他很疑惑。<br>然后他发现，许多gay友都是用高端的MacBook，和极客的Linux。<br>所以他写的项目，只有Windows用户能用。导致他少了许多star。</p>
+<p>这时候一位gay友向他推荐了CMake。他说：“CMake可以通过源码中间件的给项目赋能，打通上游代码与下游操作系统中间的枢纽，实现闭环。”</p>
+<p>“好好说话，别用互联网黑话。”小明一皮鞭下去，gay友啊啊大叫，说：“好好好，就是CMake可以让你的代码在任意系统上编译。”</p>
+<p>“这才乖嘛”</p>
+<p>“啪！”又是一皮鞭。</p>
+<hr>
+<h2 id="CMake的安装"><a href="#CMake的安装" class="headerlink" title="CMake的安装"></a>CMake的安装</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>去cmake官网下载.exe的包。安装的时候把<code>Add To Path</code>勾选上。</p>
+<h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><p>没有Mac不知道😭😭😭，穷死了。</p>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p>在终端输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
+<h2 id="CMake的一些基本概念"><a href="#CMake的一些基本概念" class="headerlink" title="CMake的一些基本概念"></a>CMake的一些基本概念</h2><h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><p>这个文件会出现在项目的根目录下，和各个子目录。<br>CMakeLists.txt里面就写了CMake要干什么。</p>
+<h2 id="CMakeLists-txt的基本框架"><a href="#CMakeLists-txt的基本框架" class="headerlink" title="CMakeLists.txt的基本框架"></a>CMakeLists.txt的基本框架</h2><p>假如一个项目长这样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">include</span><br><span class="line">	A.h</span><br><span class="line">	B.h</span><br><span class="line">src</span><br><span class="line">	A.cpp</span><br><span class="line">	B.cpp</span><br><span class="line">CMakeLists.txt</span><br></pre></td></tr></table></figure>
+<p>那么CMakeLists.txt就长这样</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>.<span class="number">0</span>)</span><br><span class="line"><span class="keyword">project</span>(YourProjectName)</span><br><span class="line"><span class="keyword">include_directories</span>(<span class="string">&quot;include&quot;</span>)</span><br><span class="line"><span class="keyword">add_executable</span>(</span><br><span class="line">	YourExecutableFileName</span><br><span class="line">	<span class="string">&quot;src/A.cpp&quot;</span></span><br><span class="line">	<span class="string">&quot;src/B.cpp&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="CMake的使用"><a href="#CMake的使用" class="headerlink" title="CMake的使用"></a>CMake的使用</h2><p>基于上面的项目，我们在根目录下创建一个build文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">build</span><br><span class="line">include</span><br><span class="line">	A.h</span><br><span class="line">	B.h</span><br><span class="line">src</span><br><span class="line">	A.cpp</span><br><span class="line">	B.cpp</span><br><span class="line">CMakeLists.txt</span><br></pre></td></tr></table></figure>
+<p>我们打开命令行（Windows是cmd）<br>进入build文件夹<br>然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+<p>然后编译</p>
+<h3 id="Windows编译"><a href="#Windows编译" class="headerlink" title="Windows编译"></a>Windows编译</h3><p>Windows用户这个时候，就可以在build目录里找到.sln文件，然后用Visual Studio打开，然后编译</p>
+<h3 id="Linux编译"><a href="#Linux编译" class="headerlink" title="Linux编译"></a>Linux编译</h3><p>在命令行执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<h3 id="Mac编译"><a href="#Mac编译" class="headerlink" title="Mac编译"></a>Mac编译</h3><p>无</p>
+<h2 id="CMakeLists-txt里的一些基本命令"><a href="#CMakeLists-txt里的一些基本命令" class="headerlink" title="CMakeLists.txt里的一些基本命令"></a>CMakeLists.txt里的一些基本命令</h2><h3 id="cmake-minimum-required-VERSION-3-0-0"><a href="#cmake-minimum-required-VERSION-3-0-0" class="headerlink" title="cmake_minimum_required(VERSION 3.0.0)"></a><code>cmake_minimum_required(VERSION 3.0.0)</code></h3><p>这个命令的目的是表示 本项目cmake要求的最低版本</p>
+<h3 id="project-YourProjectName"><a href="#project-YourProjectName" class="headerlink" title="project(YourProjectName)"></a><code>project(YourProjectName)</code></h3><p>这个命令的目的是表示 本项目的名字</p>
+<h3 id="include-directories"><a href="#include-directories" class="headerlink" title="include_directories()"></a><code>include_directories()</code></h3><p>这个命令表示 本项目的所有源代码的<code>#include</code>的起始路径</p>
+<blockquote>
+<p>举个例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+include</span><br><span class="line">	+A.h</span><br><span class="line">+src</span><br><span class="line">	+A.cpp</span><br></pre></td></tr></table></figure>
+<p>对于这么一个项目，A.cpp如果要include A.h<br>那么应该<code>#include &quot;../include/A.h&quot;</code><br>把CMakeLists.txt引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+include</span><br><span class="line">	+A.h</span><br><span class="line">+src</span><br><span class="line">	+A.cpp</span><br><span class="line">+CMakeLists.txt</span><br></pre></td></tr></table></figure>
+
+<p>CMakeLists.txt</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>.<span class="number">0</span>)</span><br><span class="line"><span class="keyword">include_directories</span>(<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">add_executable</span>(</span><br><span class="line">	main</span><br><span class="line">	<span class="string">&quot;src/A.cpp&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>++++++++++++++++++<br>这样A.cpp里面可以只写<code>#include &quot;A.h&quot;</code></p>
+</blockquote>
+<h3 id="add-executable"><a href="#add-executable" class="headerlink" title="add_executable()"></a><code>add_executable()</code></h3><p>从刚刚的例子可以看到，这命令有两个参数，第一个是生成的可执行文件的名字，后面可以有好多参数，都是源代码</p>
+<p>具体教程看网上吧</p>
+<h1 id="GTest"><a href="#GTest" class="headerlink" title="GTest"></a>GTest</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官网上的安装方式是每进行一次cmake都在线下载，但GTest是放在GitHub的，下载会很慢。<br>所以我提供一种本地的方法<br>先在项目的根目录下创建一个third_party文件夹<br>在third_party文件夹里打开cmd</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/google/googletest.git</span><br></pre></td></tr></table></figure>
+<p>然后再CMakeLists.txt里写</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enable_testing</span>()</span><br><span class="line"><span class="keyword">add_subdirectory</span>(third_party/gtest)</span><br><span class="line"><span class="keyword">include_directories</span>(third_party/gtest/googletest/<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">add_executable</span>(</span><br><span class="line">	<span class="keyword">Test</span></span><br><span class="line">	<span class="string">&quot;test/test.cpp&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>然后在根目录下创建test文件夹，在test文件夹里面创建test.cpp<br>test.cpp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;gtest/gtest.h&gt;</span></span></span><br><span class="line"><span class="built_in">TEST</span>(Name1,Name2)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">/*Test Body*/</span></span><br><span class="line">	<span class="built_in">EXPECT_EQ</span>(<span class="number">7</span>*<span class="number">8</span>, <span class="number">56</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后<code>cmake .. </code>以后编译，然后<code>ctest</code><br>就开始了测试。OK。<br>具体学习需要更加深入。多踩坑就学会了😭😭😭。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+
+</html>

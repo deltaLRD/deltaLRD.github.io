@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>C++静态编译 - LRD&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="LRD,"> 
+    <meta name="description" content="C++ 编译Windows在Windows上写代码的方式其实VS是比较推荐的，但是VS过于臃肿，我不是很喜欢。所以我想在Windows上用Linux的编译方式，同时我还想用现代化的LLVM+Clan,"> 
+    <meta name="author" content="LRD"> 
+    <link rel="alternative" href="atom.xml" title="LRD&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="C++静态编译 - LRD&#39;s blog"/>
+    <meta name="twitter:description" content="C++ 编译Windows在Windows上写代码的方式其实VS是比较推荐的，但是VS过于臃肿，我不是很喜欢。所以我想在Windows上用Linux的编译方式，同时我还想用现代化的LLVM+Clan,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="LRD&#39;s blog"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="C++静态编译 - LRD&#39;s blog"/>
+    <meta property="og:description" content="C++ 编译Windows在Windows上写代码的方式其实VS是比较推荐的，但是VS过于臃肿，我不是很喜欢。所以我想在Windows上用Linux的编译方式，同时我还想用现代化的LLVM+Clan,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">LRD&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">C++静态编译</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">C++静态编译</h1>
+        <div class="stuff">
+            <span>六月 15, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="C-编译"><a href="#C-编译" class="headerlink" title="C++ 编译"></a>C++ 编译</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>在Windows上写代码的方式其实VS是比较推荐的，但是VS过于臃肿，我不是很喜欢。<br>所以我想在Windows上用Linux的编译方式，同时我还想用现代化的LLVM+Clang。<br>经过我无数次的踩坑，我找到了一条最佳实践。</p>
+<p><a target="_blank" rel="noopener" href="https://winlibs.com/">WinLibs</a>上这个网站，可以下载已经编译好的在Windows上的<br><code>GCC GDB LLVM Clang lld lldb</code></p>
+<p>满足我们搞事情的需求。</p>
+<p>跟着官方的方式下载好我们所需要的7z的包。<br>我们解压到我们好记的位置，然后在path里添加<code>你的路径/mingw64/bin/</code></p>
+<p>然后在终端里测试一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gcc -v</span><br><span class="line">g++ -v</span><br><span class="line">gdb -v</span><br><span class="line">clang -v</span><br><span class="line">clang++ -v</span><br><span class="line">lld -v</span><br><span class="line">lldb -v</span><br></pre></td></tr></table></figure>
+<h2 id="测试正常以后，我们就可以开始搞事情了"><a href="#测试正常以后，我们就可以开始搞事情了" class="headerlink" title="测试正常以后，我们就可以开始搞事情了"></a>测试正常以后，我们就可以开始搞事情了</h2><hr>
+<h2 id="单文件编译"><a href="#单文件编译" class="headerlink" title="单文件编译"></a>单文件编译</h2><h3 id="gcc-g-编译"><a href="#gcc-g-编译" class="headerlink" title="gcc/g++编译"></a><code>gcc/g++</code>编译</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello World\n&quot;</span>; </span><br><span class="line">    <span class="keyword">return</span>  <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于这么一个文件我们如何用g++编译他呢</p>
+<p><code>g++ main.cpp -o main.exe</code></p>
+<p>这里解读一下这个命令</p>
+<p><code>g++</code>表示我们用的编译器是<code>g++</code>，<br><code>main.cpp</code>是我们要编译的文件，<br><code>-o</code>表示我们编译后需要生成一个可执行文件，<br><code>main.exe</code>表示生成的可执行文件是叫<code>main.exe</code></p>
+<p>这样一个cpp文件就编译好了，可以运行。</p>
+<h3 id="clang编译"><a href="#clang编译" class="headerlink" title="clang编译"></a><code>clang</code>编译</h3><p>文件不变，我们改用<code>clang</code></p>
+<p><code>clang++ main.cpp -o main.exe</code></p>
+<p>这就不用解释了吧，和<code>g++</code>一样</p>
+<blockquote>
+<p>clang的具体细节还是需要自行查阅网络资料学习<br>这里只有简单操作，大佬勿喷</p>
+</blockquote>
+<hr>
+<h3 id="C-11-或更高版本的编译"><a href="#C-11-或更高版本的编译" class="headerlink" title="C++11 或更高版本的编译"></a>C++11 或更高版本的编译</h3><p><code>g++ main.cpp -std=c++11 -o main.exe</code></p>
+<p>多出来的<code>-std=c++11</code>，表示编译所用的标准（std）是c++11</p>
+<p><code>clang</code>同理</p>
+<p><code>clang++ main.cpp -std=c++11 -o main.exe</code></p>
+<hr>
+<h2 id="简单多文件编译（复杂的请用CMake）"><a href="#简单多文件编译（复杂的请用CMake）" class="headerlink" title="简单多文件编译（复杂的请用CMake）"></a>简单多文件编译（复杂的请用CMake）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;f.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">f</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// f.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// f.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;f.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello World&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种怎么编译呢</p>
+<p><code>g++ main.cpp f.cpp -std=c++11 -o main.exe</code></p>
+<p>简单吧多添加一个源文件就可以了<br><code>clang</code>同理</p>
+<hr>
+<h2 id="静态编译"><a href="#静态编译" class="headerlink" title="静态编译"></a>静态编译</h2><p>上面介绍的编译在本地跑跑没问题，但是一旦吧编译好的文件发送给你的好基友，基友发现你这怎么缺少dll，你到底行不行</p>
+<p>这种时候就很尴尬</p>
+<p>原因是因为刚刚编译完的程序还是需要很多库的支持才能运行，但这些库在mingw64里面已经有了，所以编译器直接告诉程序，你要用这些的时候直接去那里面找。</p>
+<p>但是把程序发给基友之后，程序就找不到他要的库了。</p>
+<p>这时候静态编译就来了，我们直接把这些库都编译到一个可执行文件里不就好了，只是文件的大小变大而已<br>无伤大雅</p>
+<h3 id="g-静态编译"><a href="#g-静态编译" class="headerlink" title="g++静态编译"></a><code>g++</code>静态编译</h3><p><code>g++ main.cpp -std=c++11 -o main.exe -static</code></p>
+<p><code>g++</code>比较简单直接加一个参数就可以了</p>
+<hr>
+<h3 id="clang静态编译"><a href="#clang静态编译" class="headerlink" title="clang静态编译"></a><code>clang</code>静态编译</h3><p><code>clang++ APP.cpp -std=c++17 -o APP.exe -static -pthread -fuse-ld=lld</code></p>
+<p>去网上查了一下<code>clang</code>静态编译的事，感觉资料很少，最后找到一个方式就是加三个参数，参数我也不知道什么意思，总之写上就能运行了，实测。</p>
+<p>The End</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+
+</html>

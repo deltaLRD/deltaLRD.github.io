@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GAMES104---3rd - LRD&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="LRD,"> 
+    <meta name="description" content="GAMES104—3rd游戏里有什么
+动态物体
+静态物体
+环境
+地形
+天空
+植被 （动和静都有而且量大）
+
+
+Trigger Area &amp;amp; Air Wall这些都叫 Game Object ,"> 
+    <meta name="author" content="LRD"> 
+    <link rel="alternative" href="atom.xml" title="LRD&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="GAMES104---3rd - LRD&#39;s blog"/>
+    <meta name="twitter:description" content="GAMES104—3rd游戏里有什么
+动态物体
+静态物体
+环境
+地形
+天空
+植被 （动和静都有而且量大）
+
+
+Trigger Area &amp;amp; Air Wall这些都叫 Game Object ,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="LRD&#39;s blog"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="GAMES104---3rd - LRD&#39;s blog"/>
+    <meta property="og:description" content="GAMES104—3rd游戏里有什么
+动态物体
+静态物体
+环境
+地形
+天空
+植被 （动和静都有而且量大）
+
+
+Trigger Area &amp;amp; Air Wall这些都叫 Game Object ,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">LRD&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">GAMES104---3rd</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">GAMES104---3rd</h1>
+        <div class="stuff">
+            <span>三月 28, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Games104/" rel="tag">Games104</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="GAMES104—3rd"><a href="#GAMES104—3rd" class="headerlink" title="GAMES104—3rd"></a>GAMES104—3rd</h1><h2 id="游戏里有什么"><a href="#游戏里有什么" class="headerlink" title="游戏里有什么"></a>游戏里有什么</h2><ul>
+<li>动态物体</li>
+<li>静态物体</li>
+<li>环境<ul>
+<li>地形</li>
+<li>天空</li>
+<li>植被 （动和静都有而且量大）</li>
+</ul>
+</li>
+<li>Trigger Area &amp; Air Wall<h2 id="这些都叫-Game-Object-GO"><a href="#这些都叫-Game-Object-GO" class="headerlink" title="这些都叫 Game Object (GO)"></a>这些都叫 Game Object (GO)</h2><h3 id="无人机例子"><a href="#无人机例子" class="headerlink" title="无人机例子"></a>无人机例子</h3><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4></li>
+<li>形状</li>
+<li>位置<h4 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h4></li>
+<li>移动 … <h4 id="类定义"><a href="#类定义" class="headerlink" title="类定义"></a>类定义</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Drone</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	vector3 pos;</span><br><span class="line">	<span class="type">float</span> health;</span><br><span class="line">	<span class="type">float</span> fuel;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">scout</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+根据这个类可以派生各种派生无人机<blockquote>
+<p>早期构建方法<br>容易出现菱形继承</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="解决方法-—-组件化"><a href="#解决方法-—-组件化" class="headerlink" title="解决方法 — 组件化"></a>解决方法 — 组件化</h3><h4 id="无人机"><a href="#无人机" class="headerlink" title="无人机"></a>无人机</h4><ul>
+<li>Model组件</li>
+<li>Motor组件</li>
+<li>AI组件</li>
+<li>坐标组件</li>
+<li>…<h4 id="组件基类"><a href="#组件基类" class="headerlink" title="组件基类"></a>组件基类</h4>各种组件继承他<br>然后每个组件都有一个tick()函数<h2 id="Unreal-—-UObject-amp-Unity-—-Object"><a href="#Unreal-—-UObject-amp-Unity-—-Object" class="headerlink" title="Unreal — UObject &amp; Unity — Object"></a>Unreal — UObject &amp; Unity — Object</h2>用于GC的句柄，用来管理生命周期<br>每个GameObject 都继承于Object方便内存管理<h2 id="如何动起来"><a href="#如何动起来" class="headerlink" title="如何动起来"></a>如何动起来</h2>对于每个GO，运行每个组件的tick函数<br>但是现代引擎里，都是按组件tick的，（可能方便多线程）<h2 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h2>GO直接交互<h3 id="Event机制"><a href="#Event机制" class="headerlink" title="Event机制"></a>Event机制</h3>每个GO做个邮箱，每个组件tick的时候，先看看邮箱。<h2 id="如何管理GO"><a href="#如何管理GO" class="headerlink" title="如何管理GO"></a>如何管理GO</h2>给每个GO一个uid，pos<h3 id="场景管理"><a href="#场景管理" class="headerlink" title="场景管理"></a>场景管理</h3></li>
+<li>画格子</li>
+<li>BVH （现代引擎可能用）</li>
+<li>BSP</li>
+<li>八叉树（四叉树）</li>
+<li>k-d tree</li>
+<li>Scene Graph<h2 id="Takeaways"><a href="#Takeaways" class="headerlink" title="Takeaways"></a>Takeaways</h2></li>
+<li>每个物体都是一个Object</li>
+<li>GO可以用组件表示</li>
+<li>GO的tick</li>
+<li>GO使用event机制相互沟通</li>
+<li>尽量先tick父GO再tick子GO</li>
+<li>用邮局管理event控制时序</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+
+</html>
