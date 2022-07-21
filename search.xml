@@ -448,4 +448,39 @@
         <tag>日记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>用CMake-Clangd-vscode学习项目</title>
+    <url>/2022/07/21/%E7%94%A8CMake-Clangd-vscode%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<p>网上许多文章都让新手去学习开源项目，这很好，但是把C++的开源项目头文件和源文件是用cmake管理的，所以用vscode打开就会各种找不到头文件报错。</p>
+<p>但是我还是想用vscode来学习怎么办我们可以这样搞：</p>
+<h2 id="vscode-安装-clangd"><a href="#vscode-安装-clangd" class="headerlink" title="vscode 安装 clangd"></a>vscode 安装 clangd</h2><p>在vscode的拓展里面搜索clangd并且安装</p>
+<p>clangd是一个非常好用的智能提醒和补全工具比vscode自带的好用多了</p>
+<h2 id="cmake配置项目"><a href="#cmake配置项目" class="headerlink" title="cmake配置项目"></a>cmake配置项目</h2><p>clangd可以自动识别cmake生成的compile_commands.json来进行头文件的识别</p>
+<p>但是compile_commands.json不会自动生成，并且只能在<code>Makefile</code>和<code>Ninja</code>的模式下生成</p>
+<p>MSVC还是老老实实用Visual Studio吧</p>
+<p>我以<code>Ninja+clang</code>为例</p>
+<p>进入项目根目录后</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake .. -G &quot;Ninja&quot; -DCMAKE_C_COMPILER=&quot;D:/mingw64/bin/clang.exe&quot; -DCMAKE_CXX_COMPILER=&quot;D:/mingw64/bin/clang++.exe&quot; -DCMAKE_EXPORT_COMPILE_COMMANDS=ON</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
+<p>然后用vscode打开clangd就会自动帮你配置好你需要的东西<br>perfect！</p>
+<hr>
+<h3 id="G-quot-Ninja-quot"><a href="#G-quot-Ninja-quot" class="headerlink" title="-G &quot;Ninja&quot;"></a><code>-G &quot;Ninja&quot;</code></h3><p>这个就表示 我要用Ninja来编译我的项目</p>
+<hr>
+<h3 id="DCMAKE-C-COMPILER-quot-D-mingw64-bin-clang-exe-quot"><a href="#DCMAKE-C-COMPILER-quot-D-mingw64-bin-clang-exe-quot" class="headerlink" title="-DCMAKE_C_COMPILER=&quot;D:/mingw64/bin/clang.exe&quot;"></a><code>-DCMAKE_C_COMPILER=&quot;D:/mingw64/bin/clang.exe&quot;</code></h3><p><code>-D</code> 这个表示我要定义一个宏定义</p>
+<p><code>CMAKE_C_COMPILER=&quot;&quot;</code> 表示我的C语言的编译器的路径是…</p>
+<p><code>CMAKE_CXX_COMPILER=&quot;&quot;</code> 同理表示C++的编译器的路径是…</p>
+<hr>
+<h3 id="导出编译命令-DCMAKE-EXPORT-COMPILE-COMMANDS-ON"><a href="#导出编译命令-DCMAKE-EXPORT-COMPILE-COMMANDS-ON" class="headerlink" title="导出编译命令 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"></a>导出编译命令 <code>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code></h3><p><code>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code> 表示我要导出我的编译命令好让别的软件用</p>
+<hr>
+<h2 id="实战-leveldb"><a href="#实战-leveldb" class="headerlink" title="实战 leveldb"></a>实战 leveldb</h2><p><code>git clone https://github.com/google/leveldb.git</code> 先把项目克隆下来</p>
+<p><code>cd leveldb</code>进入项目根目录</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">cmake .. -G &quot;Ninja&quot; -DCMAKE_C_COMPILER=&quot;D:/mingw64/bin/clang.exe&quot; -DCMAKE_CXX_COMPILER=&quot;D:/mingw64/bin/clang++.exe&quot; -DCMAKE_EXPORT_COMPILE_COMMANDS=ON</span><br></pre></td></tr></table></figure>
+<p>cmake配置</p>
+<p><code>cd ..</code> 返回根目录<br><code>code .</code> 用vscode打开</p>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>CMake</tag>
+      </tags>
+  </entry>
 </search>
