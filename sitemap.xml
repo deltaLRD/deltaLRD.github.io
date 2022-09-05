@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://deltalrd.github.io/2022/02/02/CMake-GTest/</loc>
+    
+    <lastmod>2022-09-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://deltalrd.github.io/2022/08/17/vscode-c-%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2022-08-17</lastmod>
@@ -66,15 +75,6 @@
   
   <url>
     <loc>https://deltalrd.github.io/2022/03/21/GAMES104-1rd/</loc>
-    
-    <lastmod>2022-06-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://deltalrd.github.io/2022/02/02/CMake-GTest/</loc>
     
     <lastmod>2022-06-16</lastmod>
     
@@ -148,7 +148,7 @@
 
   <url>
     <loc>https://deltalrd.github.io/</loc>
-    <lastmod>2022-08-17</lastmod>
+    <lastmod>2022-09-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -156,35 +156,35 @@
   
   <url>
     <loc>https://deltalrd.github.io/tags/C/</loc>
-    <lastmod>2022-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://deltalrd.github.io/tags/Games104/</loc>
-    <lastmod>2022-08-17</lastmod>
+    <lastmod>2022-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://deltalrd.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2022-08-17</lastmod>
+    <lastmod>2022-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://deltalrd.github.io/tags/CMake/</loc>
-    <lastmod>2022-08-17</lastmod>
+    <loc>https://deltalrd.github.io/tags/Games104/</loc>
+    <lastmod>2022-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://deltalrd.github.io/tags/vscode/</loc>
-    <lastmod>2022-08-17</lastmod>
+    <lastmod>2022-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://deltalrd.github.io/tags/CMake/</loc>
+    <lastmod>2022-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
